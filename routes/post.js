@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const bluebird = require("bluebird");
 const Post = require("../models/Post");
 const Comments = require("../models/Comments");
 const authentication = require("../middleware/authenticate");
