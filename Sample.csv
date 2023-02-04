@@ -1,0 +1,88 @@
+Test Case Name,API Endpoint,Description,Positive or Negative,Steps to test,Link,Sample JSON,Sample Response
+User Login,/api/authenticate,"should perform user authentication(email,password) and return a JWT token.",Positive ,"1. Send a post request with the required fields: email, password
+2. Check response field according to requirements.
+3. save the token for further use.
+4. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/authenticate,"{
+    ""email"":""vaishnavi@gmail.com"",
+    ""password"":""pass@123""
+}","""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk"""
+Follow User,/api/follow/{id},authenticated user would follow user with {id},Positive ,"1. Send a post request with the required fields: token
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/follow/63465a864059129eef1f8926,"{
+    ""token"": ""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk""
+}","""user has been followed"""
+Create Post,api/posts/,It would add a new post created by the authenticated user,Positive ,"1. Send a post request with the required fields: token, title, desc
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/posts,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk"",
+    ""title"":""Melange"",
+    ""desc"":""Event Oraganised by VIT Pune,at campus . It includes many competions .Other colleges are also allowed in it""
+}","{
+    ""id"": ""634710aab299e5abe6db1724"",
+    ""title"": ""Melange"",
+    ""desc"": ""Event Oraganised by VIT Pune,at campus . It includes many competions .Other colleges are also allowed in it"",
+    ""createdAt"": ""2022-10-12T19:08:26.797Z""
+}"
+Comment On Post,/api/comment/{id},dd comment for post with {id} by the authenticated user.,Positive ,"1. Send a post request with the required fields: token, comment
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/comment/634710aab299e5abe6db1724,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk"",
+    ""comment_text"":""something something....about the post""
+}","""63471143b299e5abe6db1728"""
+Like Post,/api/like/{id},It would like the post with {id} by the authenticated user.,Positive ,"1. Send a post request with the required fields: token,post Id
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/like/634710aab299e5abe6db1724,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk""
+}",The post has been liked
+Get user Profile,/api/user,It should authenticate the request and return the respective user profile.,Positive ,"1. Send a get request with the required fields: token
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/user,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk""
+}","{
+    ""username"": ""Vaishnavi"",
+    ""no_followers"": 1,
+    ""no_following"": 4
+}"
+Get All post by perticular user,/api/all_posts,It would return all posts created by authenticated user sorted by post time.,Positive ,"1. Send a get request with the required fields: token
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/all_posts,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk""
+}","[
+    {
+        ""id"": ""634710aab299e5abe6db1724"",
+        ""title"": ""Melange"",
+        ""desc"": ""Event Oraganised by VIT Pune,at campus . It includes many competions .Other colleges are also allowed in it"",
+        ""createdAt"": ""2022-10-12T19:08:26.797Z"",
+        ""likes"": 1,
+        ""comments"": [
+            {
+                ""userId"": ""634659b74059129eef1f8923"",
+                ""comment_text"": ""something something....about the post""
+            }
+        ]
+    },
+    {
+        ""id"": ""6346862c1c1fb1356dc214a0"",
+        ""title"": ""Vishwostav"",
+        ""desc"": ""Event Oraganised by VIT Pune,at campus"",
+        ""createdAt"": ""2022-10-12T09:17:32.887Z"",
+        ""likes"": 0,
+        ""comments"": [
+            {
+                ""userId"": ""634659b74059129eef1f8923"",
+                ""comment_text"": ""something something....""
+            }
+        ]
+    }
+]"
+Get the perticular post ,api/posts/{id},It would like the post with {id} by the authenticated user.,Positive ,"1. Send a get request with the required fields: token,post Id
+2. Check response field according to requirements.
+3. Cross validated the resposne field value with that in the database table",https://socialmediaapi-wm53.onrender.com/api/posts/634710aab299e5abe6db1724,"{
+    ""token"":""eyJhbGciOiJIUzI1NiJ9.VmFpc2huYXZp.IT0b7wfmLOcON4vTXPzWYpx5A26gndoIjrb1brTHLOk""
+}","{
+    ""id"": ""634710aab299e5abe6db1724"",
+    ""title"": ""Melange"",
+    ""desc"": ""Event Oraganised by VIT Pune,at campus . It includes many competions .Other colleges are also allowed in it"",
+    ""no_likes"": 1,
+    ""no_comments"": 1
+}"
