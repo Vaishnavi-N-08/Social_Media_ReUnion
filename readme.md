@@ -8,7 +8,7 @@ In this `README.md` file, you will find all the necessary information to get sta
 
 
 ## User Login
-`/api/authenticate`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/authenticate)
+`POST` `/api/authenticate`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/authenticate)
 
 should perform user authentication(email,password) and return a JWT token.
 1. Send a post request with the required fields: email, password
@@ -26,7 +26,7 @@ should perform user authentication(email,password) and return a JWT token.
 ```
 
 ## Follow User
-`/api/follow/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/follow/63465a864059129eef1f8926)
+`POST` `/api/follow/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/follow/63465a864059129eef1f8926)
 
 authenticated user would follow user with {id}
 1. Send a post request with the required fields: token
@@ -42,7 +42,7 @@ authenticated user would follow user with {id}
 ```
 
 ## Create Post
-`api/posts/`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/posts)
+`POST` `api/posts/`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/posts)
 
 It would add a new post created by the authenticated user
 1. Send a post request with the required fields: token, title, desc
@@ -65,9 +65,9 @@ It would add a new post created by the authenticated user
 ```
 
 ## Comment On Post
-`/api/comment/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/comment/634710aab299e5abe6db1724)
+`POST` `/api/comment/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/comment/634710aab299e5abe6db1724)
 
-dd comment for post with {id} by the authenticated user.
+get comment for post with {id} by the authenticated user.
 1. Send a post request with the required fields: token, comment
 2. Check response field according to requirements.
 3. Cross validated the resposne field value with that in the database table
@@ -82,7 +82,7 @@ dd comment for post with {id} by the authenticated user.
 ```
 
 ## Like Post
-`/api/like/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/like/634710aab299e5abe6db1724)
+`POST` `/api/like/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/like/634710aab299e5abe6db1724)
 
 It would like the post with {id} by the authenticated user.
 1. Send a post request with the required fields: token,post Id
@@ -98,7 +98,7 @@ The post has been liked
 ```
 
 ## Get user Profile
-`/api/user`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/user)
+`GET` `/api/user`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/user)
 
 It should authenticate the request and return the respective user profile.
 1. Send a get request with the required fields: token
@@ -118,7 +118,7 @@ It should authenticate the request and return the respective user profile.
 ```
 
 ## Get All post by perticular user
-`/api/all_posts`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/all_posts)
+`GET` `/api/all_posts`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/all_posts)
 
 It would return all posts created by authenticated user sorted by post time.
 1. Send a get request with the required fields: token
@@ -161,7 +161,7 @@ It would return all posts created by authenticated user sorted by post time.
 ```
 
 ## Get the perticular post 
-`api/posts/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/posts/634710aab299e5abe6db1724)
+`GET` `api/posts/{id}`	[Deployed Link](https://socialmediaapi-wm53.onrender.com/api/posts/634710aab299e5abe6db1724)
 
 It would like the post with {id} by the authenticated user.
 1. Send a get request with the required fields: token,post Id
